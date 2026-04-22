@@ -1,0 +1,57 @@
+{
+  "_comment": "Canonical Trust Chain Declaration — MyAuberge Hotel ↔ Ponyhouse Farm inter-entity trust",
+  "_spec": "activitytravel.pro/working-drafts/layer1/trust-chain",
+  "_version": "trust-chain-v0.2",
+  "_note": "Trust established via inter-entity service agreement. Both entities have the same principal (Tom Sato). KYC method: INTER_ENTITY_AGREEMENT.",
+
+  "declaration_id": "trust-myauberge-ponyhouse-2026",
+  "declared_by": "myauberge-hotel",
+  "declared_at": "2026-04-01T00:00:00Z",
+  "valid_until": "2027-04-01T00:00:00Z",
+
+  "trust_relationship": {
+    "trusting_party": "myauberge-hotel",
+    "trusted_party": "ponyhouse-farm",
+    "trust_level": "ESTABLISHED",
+    "trust_basis": "INTER_ENTITY_SERVICE_AGREEMENT",
+    "trust_direction": "BILATERAL",
+    "established_at": "2026-04-01T00:00:00Z"
+  },
+
+  "permitted_operations": {
+    "booking_object_access": true,
+    "activity_phases_only": true,
+    "mandate_authority_ceiling": 1,
+    "_note": "Ponyhouse Farm Agent operates at Level 1 (query + phase transitions within activity scope only)",
+    "permitted_transitions_as_supplier": [
+      "ACTIVITY_READY",
+      "ACTIVITY_STARTED",
+      "ACTIVITY_COMPLETED",
+      "ACTIVITY_ISSUE_REPORTED"
+    ]
+  },
+
+  "commercial": {
+    "revenue_split": "PLACEHOLDER — revenue split percentage Tom to confirm",
+    "settlement_currency": "JPY",
+    "settlement_frequency": "MONTHLY",
+    "agreement_document": "PLACEHOLDER — inter-entity service agreement reference"
+  },
+
+  "verification": {
+    "kyc_method": "INTER_ENTITY_AGREEMENT",
+    "shared_principal": "Tom Sato",
+    "principal_role_myauberge": "CEO, MyAuberge K.K.",
+    "principal_role_ponyhouse": "Operator, Ponyhouse Farm",
+    "verified_by": "myauberge-hotel",
+    "verification_date": "2026-04-01T00:00:00Z"
+  },
+
+  "signatures": {
+    "myauberge_signature": "PLACEHOLDER_ED25519_SIGNATURE",
+    "myauberge_key_id": "myauberge-hotel-key-2026-001",
+    "ponyhouse_signature": "PLACEHOLDER_ED25519_SIGNATURE",
+    "ponyhouse_key_id": "ponyhouse-farm-key-2026-001",
+    "signed_at": "2026-04-01T00:00:00Z"
+  }
+}

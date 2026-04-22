@@ -1,0 +1,111 @@
+{
+  "_comment": "Canonical Capability Declaration — Ponyhouse Farm (FARM_EXPERIENCE)",
+  "_spec": "activitytravel.pro/working-drafts/layer2/capability-declarations",
+  "_version": "capability-declaration-v1.0",
+
+  "declaration_id": "ponyhouse-capability-2026",
+  "party_id": "ponyhouse-farm",
+  "regulatory_class": "FARM_EXPERIENCE",
+  "published_at": "2026-04-01T00:00:00Z",
+  "valid_until": "2027-04-01T00:00:00Z",
+
+  "operator_profile": {
+    "type": "INDEPENDENT_ACTIVITY_SUPPLIER",
+    "specialisation": "ORGANIC_FARM_EXPERIENCES",
+    "languages_supported": ["ja", "en"],
+    "accessibility": "PLACEHOLDER — OQ-PONY-11: accessibility details Tom to provide"
+  },
+
+  "activities": [
+    {
+      "activity_id": "ponyhouse-rose-garden",
+      "activity_category": "FARM_EXPERIENCE",
+      "display_name": {
+        "en": "Rose Garden Experience",
+        "ja": "バラ園体験"
+      },
+      "description": {
+        "en": "Guided tour of the organic rose garden with seasonal rose picking.",
+        "ja": "オーガニックバラ園のガイドツアー。季節のバラ摘みを体験。"
+      },
+      "duration_minutes": 60,
+      "max_participants": "PLACEHOLDER — OQ-PONY-12: Tom to provide",
+      "min_age": null,
+      "child_pricing": "PLACEHOLDER — OQ-PONY-14: child pricing Tom to provide",
+      "pricing": {
+        "adult": "PLACEHOLDER — OQ-PONY-13: rose garden pricing Tom to provide",
+        "currency": "JPY",
+        "tax_included": false,
+        "tax_rate": 0.10
+      },
+      "availability": {
+        "season": "MAY_TO_OCTOBER",
+        "days_of_week": "PLACEHOLDER — OQ-PONY-10: operating days Tom to provide",
+        "advance_booking_required_days": 2
+      },
+      "conditions": [
+        "Weather-dependent: cancellation threshold PLACEHOLDER — OQ-PONY-16 weather threshold Tom to provide",
+        "Outdoor activity — appropriate footwear required"
+      ]
+    },
+    {
+      "activity_id": "ponyhouse-harvest",
+      "activity_category": "FARM_EXPERIENCE",
+      "display_name": {
+        "en": "Farm Harvest Experience",
+        "ja": "収穫体験"
+      },
+      "description": {
+        "en": "Hands-on seasonal vegetable and fruit harvesting on the organic farm.",
+        "ja": "オーガニック農場での季節の野菜・果物の収穫体験。"
+      },
+      "duration_minutes": 120,
+      "max_participants": "PLACEHOLDER — OQ-PONY-12: Tom to provide",
+      "pricing": {
+        "adult": "PLACEHOLDER — OQ-PONY-13: harvest pricing Tom to provide",
+        "currency": "JPY",
+        "tax_included": false,
+        "tax_rate": 0.10
+      },
+      "availability": {
+        "season": "SEASONAL — OQ-AS-2: HarvestCalendar deferred to Fragment Library v2",
+        "advance_booking_required_days": 3
+      }
+    }
+  ],
+
+  "notification_channels": {
+    "supplier_inbound": "LINE",
+    "_note": "All supplier-facing notifications from ATP agent delivered via LINE"
+  },
+
+  "duty_of_care": {
+    "first_aid_certified": "PLACEHOLDER — OQ-PONY-17: first aid certification Tom to provide",
+    "liability_insurance": "PLACEHOLDER — OQ-PONY-15: liability insurance details Tom to provide",
+    "emergency_contact": "PLACEHOLDER"
+  },
+
+  "food_safety": {
+    "hygiene_certified": "PLACEHOLDER — OQ-PONY-9: food hygiene certificate Tom to provide",
+    "organic_certified": "PLACEHOLDER — OQ-PONY-16: organic certification Tom to provide"
+  },
+
+  "atp_compliance": {
+    "regulatory_class": "FARM_EXPERIENCE",
+    "cedar_policy_set": "FARM_EXPERIENCE",
+    "protocol_version": "1.0"
+  },
+
+  "_blocking_open_questions": [
+    "OQ-PONY-7: Invoice Tax Number — URGENT, blocks Mike build",
+    "OQ-PONY-8: Farm address and GPS — URGENT, blocks Mike build",
+    "OQ-PONY-15: Liability insurance — URGENT, blocks Mike build",
+    "OQ-PONY-9: Food hygiene certificate",
+    "OQ-PONY-10: Operating days",
+    "OQ-PONY-12: Max participants",
+    "OQ-PONY-13: Pricing for both activities",
+    "OQ-PONY-14: Child pricing",
+    "OQ-PONY-16: Organic certification and weather threshold",
+    "OQ-PONY-17: First aid certification"
+  ]
+}

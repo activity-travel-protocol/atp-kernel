@@ -1,0 +1,101 @@
+{
+  "_comment": "Canonical Party Registry entry — Ponyhouse Farm (independent activity supplier, FARM_EXPERIENCE)",
+  "_spec": "activitytravel.pro/working-drafts/layer1/party-registry",
+  "_version": "party-registry-v0.2",
+  "_note": "OQ-PONY-7 (Invoice Tax Number) and OQ-PONY-8 (farm address/GPS) are REQUIRED before this fixture is production-ready. Tom Sato to provide.",
+
+  "party_id": "ponyhouse-farm",
+  "party_type": "ACTIVITY_SUPPLIER",
+  "display_name": "Ponyhouse Farm",
+  "legal_name": "Ponyhouse Farm",
+  "legal_name_ja": "ポニーハウスファーム",
+
+  "regulatory_class": "FARM_EXPERIENCE",
+
+  "jurisdiction": {
+    "primary": "JP",
+    "registered_in": ["JP"],
+    "operation_prefectures": ["NAGANO"],
+    "operation_municipalities": ["CHINO"]
+  },
+
+  "contact": {
+    "address": "PLACEHOLDER — OQ-PONY-8: Tom to provide full address and GPS coordinates",
+    "gps": {
+      "latitude": null,
+      "longitude": null,
+      "_note": "OQ-PONY-8: Tom to provide"
+    },
+    "walking_directions_from_myauberge": "PLACEHOLDER — OQ-PONY-8: Tom to provide"
+  },
+
+  "tax": {
+    "invoice_tax_number": "PLACEHOLDER — OQ-PONY-7: T + 13 digits, Tom to provide",
+    "consumption_tax_registered": true,
+    "consumption_tax_rate": 0.10
+  },
+
+  "cryptography": {
+    "algorithm": "Ed25519",
+    "public_key": "PLACEHOLDER_ED25519_PUBLIC_KEY_BASE64",
+    "key_id": "ponyhouse-farm-key-2026-001",
+    "key_created": "2026-04-01T00:00:00Z",
+    "key_expires": "2027-04-01T00:00:00Z"
+  },
+
+  "trust": {
+    "trust_level": "ESTABLISHED",
+    "trust_basis": "INTER_ENTITY_SERVICE_AGREEMENT",
+    "trust_established_with": "myauberge-hotel",
+    "trust_established_at": "2026-04-01T00:00:00Z",
+    "kyc_verified": true,
+    "kyc_method": "INTER_ENTITY_AGREEMENT",
+    "kyc_notes": "Tom Sato is sole principal of both MyAuberge K.K. and Ponyhouse Farm"
+  },
+
+  "capabilities": {
+    "declaration_url": "PLACEHOLDER — to be set when Ponyhouse kernel endpoint is live",
+    "activity_categories": ["FARM_EXPERIENCE"],
+    "activities": [
+      {
+        "activity_id": "ponyhouse-rose-garden",
+        "display_name": "Rose Garden Experience",
+        "display_name_ja": "バラ園体験",
+        "category": "FARM_EXPERIENCE",
+        "duration_minutes": 60,
+        "max_participants": "PLACEHOLDER — OQ-PONY-12: Tom to provide",
+        "pricing_note": "OQ-PONY-13: rose garden pricing — Tom to provide"
+      },
+      {
+        "activity_id": "ponyhouse-harvest",
+        "display_name": "Farm Harvest Experience",
+        "display_name_ja": "収穫体験",
+        "category": "FARM_EXPERIENCE",
+        "duration_minutes": 120,
+        "max_participants": "PLACEHOLDER — OQ-PONY-12: Tom to provide",
+        "produce_availability": "OQ-AS-2: HarvestCalendar — deferred to Fragment Library v2"
+      }
+    ]
+  },
+
+  "insurance": {
+    "liability_insurance": "PLACEHOLDER — OQ-PONY-15: Tom to provide insurer, policy number, coverage amount"
+  },
+
+  "certifications": {
+    "organic_certified": "PLACEHOLDER — OQ-PONY-16: Tom to provide certification body and number"
+  },
+
+  "atp": {
+    "protocol_version": "1.0",
+    "tier": "TIER_1",
+    "org_namespace": "atp_ponyhouse"
+  },
+
+  "metadata": {
+    "created_at": "2026-04-01T00:00:00Z",
+    "updated_at": "2026-04-01T00:00:00Z",
+    "schema_version": "0.2",
+    "blocking_open_questions": ["OQ-PONY-7", "OQ-PONY-8", "OQ-PONY-15"]
+  }
+}

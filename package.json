@@ -1,0 +1,74 @@
+{
+  "name": "atp-kernel",
+  "version": "0.1.0",
+  "description": "ATP Kernel — reference implementation of the Activity Travel Protocol",
+  "private": true,
+  "license": "Apache-2.0",
+  "author": {
+    "name": "Activity Travel Protocol Foundation",
+    "url": "https://activitytravel.org"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/activity-travel-protocol/atp-kernel.git"
+  },
+  "homepage": "https://activitytravel.pro",
+
+  "engines": {
+    "node": ">=24.0.0",
+    "npm": ">=10.0.0"
+  },
+
+  "workspaces": [
+    "packages/*"
+  ],
+
+  "scripts": {
+    "build": "npm run build --workspaces --if-present",
+    "build:watch": "npm run build:watch --workspaces --if-present",
+
+    "test": "npm run test --workspaces --if-present",
+    "test:unit": "npm run test:unit --workspaces --if-present",
+    "test:conformance": "npx tsx examples/azusa-journey/index.ts --mode=conformance",
+
+    "dev": "npm run dev -w packages/core",
+    "start": "node packages/core/dist/index.js",
+
+    "lint": "eslint packages/*/src --ext .ts",
+    "typecheck": "tsc --build packages/*/tsconfig.json",
+    "format": "prettier --write packages/*/src/**/*.ts",
+
+    "fixtures:validate": "npx tsx scripts/validate-fixtures.ts",
+    "fixtures:generate": "npx tsx scripts/generate-fixtures.ts",
+
+    "party:register": "npx @atp/cli party register",
+    "kernel:status": "npx @atp/cli kernel status"
+  },
+
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@typescript-eslint/eslint-plugin": "^7.0.0",
+    "@typescript-eslint/parser": "^7.0.0",
+    "eslint": "^9.0.0",
+    "prettier": "^3.0.0",
+    "tsx": "^4.0.0",
+    "typescript": "^5.5.0",
+    "vitest": "^2.0.0"
+  },
+
+  "packageManager": "npm@10.8.0",
+
+  "_build_sequence": {
+    "_note": "Do not skip steps. See CLAUDE.md for full build sequence details.",
+    "step_1": "PostgreSQL schema — packages/adapters (IEventLog, PostgresEventLog, schema migrations)",
+    "step_2": "Party Registry — packages/core (in-memory store, Ed25519, regulatory_class)",
+    "step_3": "XState v5 state machine — packages/core (11 states, 8 IN_JOURNEY phases, guards)",
+    "step_4": "Security Kernel skeleton — packages/security (5-step path, mandate validation stub)",
+    "step_5": "Cedar policy evaluation — packages/security (3 policy sets, Cedarling WASM)",
+    "step_6": "ATP Mandate Model — packages/security (Ed25519 JWT, narrowing property)",
+    "step_7": "Event log — packages/adapters (StateTransitionEvent, PostgresEventLog production)",
+    "step_8": "REST API — packages/core (17 OpenAPI 3.1 endpoints, ATPRuntime binding)",
+    "step_9": "Azusa Journey E2E — examples/azusa-journey (acceptance test)",
+    "step_10": "BOOKING_SUSPENDED — packages/core + packages/workflow (XState parallel state, HEM)"
+  }
+}

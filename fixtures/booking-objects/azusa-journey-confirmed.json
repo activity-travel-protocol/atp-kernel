@@ -1,0 +1,118 @@
+{
+  "_comment": "Canonical Booking Object snapshot — Azusa Journey at CONFIRMED state",
+  "_spec": "activitytravel.pro/working-drafts/layer3/booking-object",
+  "_version": "booking-object-v1.0",
+
+  "booking_object_id": "bo_azusa_001",
+  "state": "CONFIRMED",
+  "regulatory_class": "OWN_SUPPLY",
+
+  "created_at": "2026-05-01T09:00:00Z",
+  "confirmed_at": "2026-05-01T09:12:33Z",
+  "journey_start": "2026-05-10T10:30:00Z",
+  "journey_end": "2026-05-12T11:00:00Z",
+
+  "operator": {
+    "party_id": "myauberge-hotel",
+    "party_type": "ACCOMMODATION_OPERATOR",
+    "regulatory_class": "OWN_SUPPLY"
+  },
+
+  "guests": [
+    {
+      "guest_id": "guest_001",
+      "display_name": "Alex Chen",
+      "locale": "en-US",
+      "notification_channel": "WHATSAPP",
+      "phone": "PLACEHOLDER",
+      "_note": "Traveller is a data field in Phase 1 — not a Party Record. Phase 2 adds TRAVELLER party_type."
+    }
+  ],
+
+  "products": [
+    {
+      "product_id": "myauberge-stay-2n",
+      "product_type": "ACCOMMODATION",
+      "supplier_party_id": "myauberge-hotel",
+      "regulatory_class": "OWN_SUPPLY",
+      "display_name": "MyAuberge 2-Night Stay",
+      "checkin": "2026-05-10T15:00:00Z",
+      "checkout": "2026-05-12T11:00:00Z",
+      "nights": 2,
+      "pricing_snapshot": {
+        "unit_price": 35000,
+        "quantity": 2,
+        "total": 70000,
+        "currency": "JPY",
+        "tax_rate": 0.10,
+        "tax_amount": 7000,
+        "total_with_tax": 77000,
+        "snapshot_taken_at": "2026-05-01T09:12:33Z",
+        "_note": "Pricing snapshot is immutable after CONFIRMATION — protocol requirement"
+      }
+    },
+    {
+      "product_id": "ponyhouse-farm-experience",
+      "product_type": "ACTIVITY",
+      "supplier_party_id": "ponyhouse-farm",
+      "regulatory_class": "FARM_EXPERIENCE",
+      "activity_category": "FARM_EXPERIENCE",
+      "display_name": "Ponyhouse Farm Experience",
+      "scheduled_date": "2026-05-11",
+      "scheduled_time": "10:00:00",
+      "duration_minutes": 120,
+      "pricing_snapshot": {
+        "unit_price": 5000,
+        "quantity": 1,
+        "total": 5000,
+        "currency": "JPY",
+        "tax_rate": 0.10,
+        "tax_amount": 500,
+        "total_with_tax": 5500,
+        "snapshot_taken_at": "2026-05-01T09:12:33Z"
+      }
+    }
+  ],
+
+  "pricing_summary": {
+    "subtotal": 75000,
+    "tax_total": 7500,
+    "grand_total": 82500,
+    "currency": "JPY",
+    "snapshot_confirmed_at": "2026-05-01T09:12:33Z"
+  },
+
+  "active_mandates": [
+    {
+      "mandate_id": "mandate_jc_001",
+      "mandate_type": "JOURNEY_COORDINATOR",
+      "issued_to_party_id": "atp-guest-agent",
+      "authority_level": 2,
+      "permitted_transitions": ["UPDATE", "CANCEL", "START_JOURNEY", "TRANSITION_PHASE"],
+      "booking_object_id": "bo_azusa_001",
+      "issued_at": "2026-05-01T09:12:35Z",
+      "expires_at": "2026-05-12T23:59:59Z",
+      "delegation_ceiling": 2,
+      "_note": "CONFIRMATION hard cap: this mandate does not include CONFIRM — Level 2 autonomous confirmation not permitted"
+    }
+  ],
+
+  "compliance": {
+    "regulatory_class_verified": "OWN_SUPPLY",
+    "jurisdiction": "JP",
+    "compliance_snapshot_at": "2026-05-01T09:12:33Z",
+    "oq_jp_1_status": "PENDING_LEGAL_OPINION",
+    "_note": "OQ-JP-1 pending. Train assistance (Azusa Journey Steps 1-3) is informal in this booking — not a Booking Object component."
+  },
+
+  "event_count": 4,
+  "last_event": {
+    "event_id": "evt_004",
+    "transition": "CONFIRM",
+    "from_state": "PENDING_CONFIRMATION",
+    "to_state": "CONFIRMED",
+    "mandate_id": "HUMAN_OPERATOR",
+    "timestamp": "2026-05-01T09:12:33Z",
+    "cedar_decision": "ALLOW"
+  }
+}

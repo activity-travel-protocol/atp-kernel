@@ -1,0 +1,65 @@
+{
+  "_comment": "Canonical ATP Mandate — Journey Coordinator mandate for Azusa Journey",
+  "_spec": "activitytravel.pro/working-drafts/layer3/mandate-model",
+  "_format": "atp-mandate+jwt (Ed25519 signed — this file shows the decoded payload)",
+  "_note": "In production, this is a signed JWT. The public key for verification is in the Party Registry entry for myauberge-hotel.",
+
+  "header": {
+    "alg": "EdDSA",
+    "typ": "atp-mandate+jwt",
+    "kid": "myauberge-hotel-key-2026-001"
+  },
+
+  "payload": {
+    "jti": "mandate_jc_001",
+    "iss": "myauberge-hotel",
+    "iat": 1746086755,
+    "exp": 1747382399,
+
+    "atp": {
+      "mandate_type": "JOURNEY_COORDINATOR",
+      "booking_object_id": "bo_azusa_001",
+      "issued_to_party_id": "atp-guest-agent",
+
+      "authority_level": 2,
+      "_authority_level_note": "Level 2 — operational. Can update and cancel. Cannot autonomously confirm (CONFIRMATION hard cap).",
+
+      "permitted_transitions": [
+        "UPDATE",
+        "CANCEL",
+        "START_JOURNEY",
+        "TRANSITION_PHASE",
+        "COMPLETE"
+      ],
+
+      "delegation_ceiling": 2,
+      "_delegation_ceiling_note": "Narrowing property: this mandate may issue sub-mandates at Level 1 or Level 2 only. Cannot issue Level 3+.",
+
+      "scope": "FULL_JOURNEY",
+
+      "sub_mandates_issued": [
+        {
+          "mandate_id": "mandate_hotel_001",
+          "issued_to": "atp-hotel-agent",
+          "authority_level": 2,
+          "scope": "ACCOMMODATION_PHASES_ONLY",
+          "_narrowing": "Level 2 ≤ delegation_ceiling(2) ✓"
+        },
+        {
+          "mandate_id": "mandate_farm_001",
+          "issued_to": "atp-farm-agent",
+          "authority_level": 1,
+          "scope": "ACTIVITY_PHASES_ONLY",
+          "_narrowing": "Level 1 ≤ delegation_ceiling(2) ✓"
+        }
+      ]
+    }
+  },
+
+  "_verification": {
+    "verify_with_public_key": "Party Registry entry for myauberge-hotel → cryptography.public_key",
+    "verify_booking_binding": "payload.atp.booking_object_id must match the Booking Object being transitioned",
+    "verify_narrowing": "For each sub-mandate: sub_mandate.authority_level ≤ this.payload.atp.delegation_ceiling",
+    "verify_confirmation_cap": "CONFIRM transition must NOT be in permitted_transitions for autonomous agent mandates"
+  }
+}

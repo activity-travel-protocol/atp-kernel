@@ -1,0 +1,61 @@
+{
+  "_comment": "Canonical Party Registry entry — MyAuberge K.K. (hotel operator, OWN_SUPPLY)",
+  "_spec": "activitytravel.pro/working-drafts/layer1/party-registry",
+  "_version": "party-registry-v0.2",
+
+  "party_id": "myauberge-hotel",
+  "party_type": "ACCOMMODATION_OPERATOR",
+  "display_name": "MyAuberge",
+  "legal_name": "MyAuberge K.K.",
+  "legal_name_ja": "マイオーベルジュ合同会社",
+
+  "regulatory_class": "OWN_SUPPLY",
+
+  "jurisdiction": {
+    "primary": "JP",
+    "registered_in": ["JP"],
+    "operation_prefectures": ["NAGANO"]
+  },
+
+  "contact": {
+    "address": "Chino, Nagano, Japan",
+    "website": "https://myauberge.jp",
+    "booking_url": "https://booking.myauberge.jp"
+  },
+
+  "cryptography": {
+    "algorithm": "Ed25519",
+    "public_key": "PLACEHOLDER_ED25519_PUBLIC_KEY_BASE64",
+    "key_id": "myauberge-hotel-key-2026-001",
+    "key_created": "2026-04-01T00:00:00Z",
+    "key_expires": "2027-04-01T00:00:00Z"
+  },
+
+  "trust": {
+    "trust_level": "ESTABLISHED",
+    "kyc_verified": true,
+    "kyc_method": "JP_CORPORATE_REGISTRY",
+    "kyc_verified_at": "2026-04-01T00:00:00Z",
+    "founding_member": true
+  },
+
+  "capabilities": {
+    "declaration_url": "https://booking.myauberge.jp/.well-known/atp-capability",
+    "activity_categories": [],
+    "accommodation_types": ["BOUTIQUE_HOTEL", "RYOKAN_STYLE"]
+  },
+
+  "atp": {
+    "kernel_endpoint": "https://booking.myauberge.jp/atp",
+    "mcp_endpoint": "https://booking.myauberge.jp/atp/mcp",
+    "protocol_version": "1.0",
+    "tier": "TIER_1",
+    "org_namespace": "atp_myauberge"
+  },
+
+  "metadata": {
+    "created_at": "2026-04-01T00:00:00Z",
+    "updated_at": "2026-04-01T00:00:00Z",
+    "schema_version": "0.2"
+  }
+}

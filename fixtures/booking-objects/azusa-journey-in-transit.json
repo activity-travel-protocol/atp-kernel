@@ -1,0 +1,85 @@
+{
+  "_comment": "Canonical Booking Object snapshot — Azusa Journey mid-journey, IN_JOURNEY:TRANSIT phase (train has reached Shiojiri)",
+  "_spec": "activitytravel.pro/working-drafts/layer3/booking-object",
+  "_version": "booking-object-v1.0",
+
+  "booking_object_id": "bo_azusa_001",
+  "state": "IN_JOURNEY",
+  "in_journey_phase": "TRANSIT",
+  "regulatory_class": "OWN_SUPPLY",
+
+  "journey_started_at": "2026-05-10T10:31:00Z",
+  "current_phase_entered_at": "2026-05-10T10:31:00Z",
+
+  "journey_position": {
+    "current_location": "Shiojiri Station",
+    "estimated_arrival_chino": "2026-05-10T11:03:00Z",
+    "minutes_to_arrival": 32,
+    "trigger_fired": "SHIOJIRI_30MIN_TRIGGER",
+    "data_source": "JR_EAST_REALTIME_API"
+  },
+
+  "notifications_sent": [
+    {
+      "notification_id": "notif_001",
+      "channel": "WHATSAPP",
+      "recipient": "guest_001",
+      "template": "JOURNEY_BOOKING_CONFIRMATION",
+      "sent_at": "2026-05-01T09:12:40Z",
+      "delivered": true
+    },
+    {
+      "notification_id": "notif_002",
+      "channel": "WHATSAPP",
+      "recipient": "guest_001",
+      "template": "TRANSIT_30MIN_WARNING",
+      "sent_at": "2026-05-10T10:31:05Z",
+      "delivered": true,
+      "content_summary": "Your train is approximately 30 minutes from Chino station"
+    },
+    {
+      "notification_id": "notif_003",
+      "channel": "LINE",
+      "recipient": "ponyhouse-farm",
+      "template": "SUPPLIER_ARRIVAL_30MIN",
+      "sent_at": "2026-05-10T10:31:07Z",
+      "delivered": true,
+      "content_summary": "Guest arriving in approximately 30 minutes"
+    }
+  ],
+
+  "active_mandates": [
+    {
+      "mandate_id": "mandate_jc_001",
+      "mandate_type": "JOURNEY_COORDINATOR",
+      "issued_to_party_id": "atp-guest-agent",
+      "authority_level": 2,
+      "permitted_transitions": ["UPDATE", "CANCEL", "TRANSITION_PHASE"],
+      "booking_object_id": "bo_azusa_001",
+      "issued_at": "2026-05-01T09:12:35Z",
+      "expires_at": "2026-05-12T23:59:59Z"
+    }
+  ],
+
+  "hem_status": {
+    "active_escalations": [],
+    "tu_chain_status": "NOT_TRIGGERED",
+    "_note": "Guest is reachable — TU chain not activated"
+  },
+
+  "event_count": 8,
+  "last_event": {
+    "event_id": "evt_008",
+    "transition": "TRANSIT_30MIN_TRIGGER",
+    "from_state": "IN_JOURNEY:TRANSIT",
+    "to_state": "IN_JOURNEY:TRANSIT",
+    "mandate_id": "mandate_jc_001",
+    "timestamp": "2026-05-10T10:31:00Z",
+    "cedar_decision": "ALLOW",
+    "payload": {
+      "trigger": "SHIOJIRI_POSITION_EVENT",
+      "train_position": "Shiojiri",
+      "estimated_arrival_minutes": 32
+    }
+  }
+}
